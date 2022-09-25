@@ -21,8 +21,18 @@ def connect():
     print(f'Connected on {ip}!')
     return ip
 
+def open_socket(ip):
+    # Open a socket
+    address = (ip, 80)
+    connection = socket.socket()
+    connection.bind(address)
+    connection.listen(1)
+    print(connection)
+    return connection
+
 try:
     ip = connect()
+    connection = open_socket(ip)
 except KeyboardInterrupt:
     machine.reset()
 
